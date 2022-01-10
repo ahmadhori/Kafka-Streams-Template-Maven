@@ -62,7 +62,7 @@ Now you are ready to start using kafka.
 ## Create a Kafka Streams Application
 
 - Run the second part of the application which is KafkaStreamsApplication.  
-This small app will use *Kafka Streams* to produce messages in the topic output-topic based on the input topic which is the messages-topic.
+This small app will use *Kafka Streams* to apply some transformations on the messages in the topic messages-topic, and it will produce the result messages in the topic output-topic
 
 - Start a kafka console consumer on the output-topic in separate window to check the results of the kafka-stream-app.
     
