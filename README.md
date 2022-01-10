@@ -1,4 +1,4 @@
-# Kafka Streams Template Maven Project
+# Kafka Streams Template Maven Project  
 
 we will use **Confluent Kafka Binaries** to run the Kafka cluster.
 
@@ -40,15 +40,10 @@ Now you are ready to start using kafka.
     kafka-topics --list --bootstrap-server localhost:9092
     ```
 
-- Start a kafka console producer in separate window.
-
-    ```bash
-    kafka-console-producer --topic messages-topic --bootstrap-server localhost:9092
-    ```
-
-- Start the console consumer in separate window.
+- Start a kafka console consumer on the messages' topic in separate window.
 
     ```bash
     kafka-console-consumer --topic messages-topic --bootstrap-server localhost:9092
     ```
 
+- Run the first part of the application which is KafkaProducerApplication and this small app will start producing messages in the topic messages-topic.
