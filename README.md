@@ -1,7 +1,13 @@
 # Kafka Streams Template Maven Project  
 
-we will use **Confluent Kafka Binaries** to run the Kafka cluster.
+This project will be used to create the followings:  
+- **A Kafka Producer Application** that will start producing random messages to a kafka topic
+- **A Kafka Streams application** that will consume messages from the previous Kafka topic and produce a new message to the output-topic.  
 
+
+We will use **Confluent Kafka Binaries** to run the Kafka cluster.
+
+## Setup a Kafka cluster:
 - Download the binaries from [confluent kafka download page](https://www.confluent.io/download/).
 - Navigate to the directory where the binaries are located in my case they are located in:  
   `~/confluent-7.0.1`
@@ -40,10 +46,26 @@ Now you are ready to start using kafka.
     kafka-topics --list --bootstrap-server localhost:9092
     ```
 
-- Start a kafka console consumer on the messages' topic in separate window.
+
+
+## Create a Kafka Producer Application
+
+- Run the first part of the application which is KafkaProducerApplication and this small app will start producing messages in the topic messages-topic.
+
+- Start a kafka console consumer on the messages-topic in separate window to check the results.
 
     ```bash
     kafka-console-consumer --topic messages-topic --bootstrap-server localhost:9092
     ```
 
-- Run the first part of the application which is KafkaProducerApplication and this small app will start producing messages in the topic messages-topic.
+
+## Create a Kafka Streams Application
+
+- Run the second part of the application which is KafkaStreamsApplication.  
+This small app will use *Kafka Streams* to produce messages in the topic output-topic based on the input topic which is the messages-topic.
+
+- Start a kafka console consumer on the output-topic in separate window to check the results of the kafka-stream-app.
+    
+    ```bash
+    kafka-console-consumer --topic output-topic --bootstrap-server localhost:9092
+    ```
