@@ -2,14 +2,10 @@ import com.github.javafaker.Faker;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.admin.AdminClient;
 import org.apache.kafka.clients.admin.CreateTopicsResult;
-import org.apache.kafka.clients.admin.DescribeTopicsResult;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
-import org.apache.kafka.common.errors.TopicExistsException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.*;
 import java.util.concurrent.*;
@@ -30,7 +26,6 @@ public class Util implements AutoCloseable {
             this.closed = false;
             this.topic = topic;
             this.props = producerProps;
-            this.props.setProperty("client.id", "faker");
         }
 
         public void run() {

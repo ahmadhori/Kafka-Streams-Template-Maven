@@ -1,6 +1,8 @@
 import lombok.extern.slf4j.Slf4j;
 
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
@@ -9,15 +11,10 @@ public class KafkaProducerApplication {
 
     public static void main(String[] args) throws Exception {
         log.info("Starting Kafka Random Producer Application");
-
-        Properties props = new Properties();
-        try (InputStream inputStream = new FileInputStream("configuration/dev.properties")) {
-            props.load(inputStream);
-        }
-
-        final String inputTopic = props.getProperty("input.topic.name");
+        final Configuration configuration = Configuration.from(args);
+        final String inputTopic = configuration.getInputTopicName();
 
         Util utility = new Util();
-        Util.Randomizer producer1 = utility.startNewRandomizer(props, inputTopic);
+        Util.Randomizer producer1 = utility.startNewRandomizer(configuration.getProducerProps(), inputTopic);
     }
 }

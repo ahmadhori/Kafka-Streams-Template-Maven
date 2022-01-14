@@ -51,19 +51,11 @@ public class KafkaStreamsApplication {
 
     public static void main(String[] args) throws Exception {
         log.info("Starting Kafka Streams Application");
+        final Configuration configuration = Configuration.from(args);
+        final String inputTopic = configuration.getInputTopicName();
+        final String outputTopic = configuration.getOutputTopicName();
 
-        Properties props = new Properties();
-        try (InputStream inputStream = new FileInputStream("configuration/dev.properties")) {
-            props.load(inputStream);
-        }
-
-        final String inputTopic = props.getProperty("input.topic.name");
-        final String outputTopic = props.getProperty("output.topic.name");
-
-
-        // Ramdomizer only used to produce sample data for this application, not typical usage
-
-        KafkaStreams kafkaStreams = new KafkaStreams(buildTopology(inputTopic, outputTopic), props);
+        KafkaStreams kafkaStreams = new KafkaStreams(buildTopology(inputTopic, outputTopic), configuration.getKafkaStreamsProperties());
 
         Runtime.getRuntime().addShutdownHook(new Thread(kafkaStreams::close));
 
