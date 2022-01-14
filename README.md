@@ -7,7 +7,7 @@ This project will be used to create the followings:
 
 We will use **Confluent Kafka Binaries** to run the Kafka cluster.
 
-## Setup a Kafka cluster:
+## Set up a Kafka cluster:
 - Download the binaries from [confluent kafka download page](https://www.confluent.io/download/).
 - Navigate to the directory where the binaries are located in my case they are located in:  
   `~/confluent-7.0.1`
@@ -19,6 +19,12 @@ We will use **Confluent Kafka Binaries** to run the Kafka cluster.
     ```
 
 Now you are ready to start using kafka.
+
+- Navigate to confluent home directory:  
+
+    ```bash
+    cd ~/confluent-7.0.1/
+    ```
 
 - Start zookeeper server in separate window.  
   by default the zookeeper server starts on port 2181.
